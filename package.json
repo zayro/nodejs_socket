@@ -3,17 +3,16 @@
   "version": "1.0.0",
   "description": "aplicativo web zav",
   "main": "socket.server.js",
+  "scripts": {
+  "start": "node socket.server.js"
+  },
   "dependencies": {
     "ejs": "^2.3.4",
     "colors": "^1.1.2",
     "express": "^4.13.3",
     "socket.io": "^1.3.7",
     "ip": "^1.1.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-  "start": "node socket.server.js"
-  },
+  },  
   "engines": {
     "node": "0.12.7"
   },

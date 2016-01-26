@@ -9,8 +9,14 @@ var app = express();
 var server = http.createServer(app);
 
 
-// create port conex
+// puerto de conexion
 server.listen(1234);
+
+/*
+app.set('port', (process.env.PORT || 5000));
+
+app.use(express.static(__dirname + '/public'));
+*/
 
 // routing
 app.get('/', function (req, res) {   res.sendfile(__dirname + '/index.html'); });
