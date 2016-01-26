@@ -8,6 +8,7 @@ var ip = require('ip');
 var app = express();
 var server = http.createServer(app);
 
+console.log("bienvenido al WEBZAV");
 
 // puerto de conexion
 server.listen(5000);
