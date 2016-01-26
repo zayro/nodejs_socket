@@ -7,6 +7,9 @@ var ip = require('ip');
 
 var app = express();
 var server = http.createServer(app);
+var io = require('socket.io')(server);
+
+
 
 console.log("bienvenido al WEBZAV");
 
@@ -27,7 +30,7 @@ app.use(express.static(__dirname + '/public_html'));
 //app.get('/', function (req, res) {   res.sendfile(__dirname + 'public_html/index.html'); });
 
 
-var io = require('socket.io').listen(server);
+
 // usernames which are currently connected to the chat
 var usernames = {};
 
@@ -35,7 +38,13 @@ var usernames = {};
 //var rooms = ['principal','room2','room3'];
 var rooms = [];
 
+
+
+
+
 io.sockets.on('connection', function (socket) {
+
+
 
 	// when the client emits 'agregar', this listens and executes
 	socket.on('agregar', function(username){
@@ -55,7 +64,8 @@ io.sockets.on('connection', function (socket) {
 		socket.emit('sala', rooms, 'principal');
 
 
-console.log('se ha conectado  : '+socket.username.green+' con la ip'+ socket.handshake.address+' al sistema: '+socket.room.green );
+	console.log('se ha conectado  : '+socket.username.green+' con la ip'+ socket.handshake.address+' al sistema: '+socket.room.green );
+
 	});
 
 	// when the client emits 'sendchat', this listens and executes
@@ -97,3 +107,13 @@ console.log('se ha conectado  : '+socket.username.green+' con la ip'+ socket.han
 
 	});
 });
+
+io.set('transports', ['websocket',
+                  'flashsocket',
+                  'htmlfile',
+                  'xhr-polling',
+                  'jsonp-polling',
+                  'polling']);
+io.set("polling duration", 10);
+
+io.listen(server);
