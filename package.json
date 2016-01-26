@@ -7,11 +7,11 @@
   "start": "node socket.server.js"
   },
   "dependencies": {
-    "ejs": "^2.3.4",
-    "colors": "^1.1.2",
-    "express": "^4.13.3",
-    "socket.io": "^1.4.4",
-    "ip": "^1.1.0"
+    "ejs": "*",
+    "colors": "*",
+    "express": "*",
+    "socket.io": "*",
+    "ip": "*"
   },
   "engines": {
     "node": "5.5.0"

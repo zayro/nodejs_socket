@@ -7,8 +7,7 @@ var ip = require('ip');
 
 var app = express();
 var server = http.createServer(app);
-var io = require('socket.io')(server);
-
+var io = require('socket.io').listen(server);
 
 
 console.log("bienvenido al WEBZAV");
@@ -22,13 +21,6 @@ server.listen(port, function () {
 // Routing
 app.use(express.static(__dirname + '/public_html'));
 
-// puerto de conexion
-//server.listen(5000);
-
-
-// routing
-//app.get('/', function (req, res) {   res.sendfile(__dirname + 'public_html/index.html'); });
-
 
 
 // usernames which are currently connected to the chat
@@ -41,11 +33,9 @@ var rooms = [];
 
 
 
-
 io.sockets.on('connection', function (socket) {
 
-
-
+console.log("Transporte protocolo", socket.conn.transport.name);
 	// when the client emits 'agregar', this listens and executes
 	socket.on('agregar', function(username){
 		// store the username in the socket session for this client
@@ -107,13 +97,3 @@ io.sockets.on('connection', function (socket) {
 
 	});
 });
-
-io.set('transports', ['websocket',
-                  'flashsocket',
-                  'htmlfile',
-                  'xhr-polling',
-                  'jsonp-polling',
-                  'polling']);
-io.set("polling duration", 10);
-
-io.listen(server);

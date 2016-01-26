@@ -1,0 +1,4 @@
+npm init
+npm start
+npm install
+npm update --save
