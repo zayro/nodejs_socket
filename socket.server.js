@@ -10,17 +10,21 @@ var server = http.createServer(app);
 
 console.log("bienvenido al WEBZAV");
 
+var port = process.env.PORT || 3000;
+
+server.listen(port, function () {
+  console.log('inicio puerto del servidor %d', port);
+});
+
+// Routing
+app.use(express.static(__dirname + '/public_html'));
+
 // puerto de conexion
-server.listen(5000);
+//server.listen(5000);
 
-/*
-app.set('port', (process.env.PORT || 5000));
-
-app.use(express.static(__dirname + '/public'));
-*/
 
 // routing
-app.get('/', function (req, res) {   res.sendfile(__dirname + '/index.html'); });
+//app.get('/', function (req, res) {   res.sendfile(__dirname + 'public_html/index.html'); });
 
 
 var io = require('socket.io').listen(server);
