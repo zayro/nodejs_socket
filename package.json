@@ -1,5 +1,5 @@
 {
-  "name": "socket web zav",
+  "name": "socket_web_zav",
   "version": "1.0.0",
   "description": "aplicativo web zav",
   "main": "socket.server.js",
