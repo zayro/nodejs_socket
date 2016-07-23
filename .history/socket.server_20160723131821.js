@@ -57,11 +57,6 @@ io.sockets.on('connection', function(socket) {
 
     });
 
-    socket.on('location', function(data) {
-        io.sockets.emit('location', data);
-		console.log('location', data);
-    });	
-
     // when the client emits 'sendchat', this listens and executes
     socket.on('EnviarMensaje', function(data) {
         // we tell the client to execute 'actualizar' with 2 parameters
